@@ -52,3 +52,7 @@ The application needs to be built with high-volume in mind:
 * Use JSON as the data protocol for the API service
 * The UI should access the service using AJAX and not using server-side calls.
 * Please supply specs for the services
+
+## Submission
+* Please zip up the project and submit via the Greenhouse link in your email.
+* Do NOT create a pull request against this repo as it's visible to all other candidates.
