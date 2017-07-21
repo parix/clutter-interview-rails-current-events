@@ -36,22 +36,23 @@ Create RESTful API endpoints to:
   * return all dates that have been cached locally
 
 ### UI
-The UI consists of a couple views that consumes the services above:
-* Events Summary Page - Allows user to view all events for a given date >= 1/1/2000
-* Dates Index Page - View an index page that lists all locally cached dates, which are linkable to the associated Event Summary Page
+Come up with any functional UI that can:
+* allow users to view all events for a given date >= 1/1/2000
+* allow users to view all locally cached dates, which are linkable to the associated Events Summary Page
+* users should not have to manually refresh to see results
 
 ## Notes
-The application needs to be built with high-volume in mind:
+The application should be built with high-volume in mind:
 * Assume that a lot of users will be viewing event summaries concurrently
 * The persistence layer may eventually contain millions of results. Searching through the results still needs to be effective.
 * Please do not use the Wikipedia API. Write a service to parse the DOM.
 
 ## Implementation requirements
-* Use Postgres as a database
-* Use a Bootstrap based UI
+* Use a Bootstrap based UI (alternative style frameworks OK)
 * Use JSON as the data protocol for the API service
-* The UI should access the service using AJAX and not using server-side calls.
-* Please supply specs for the services
+* The UI should access the wiki scraper service as an API using AJAX.
+* Please supply specs
+* Javascript Frameworks optional
 
 ## Submission
 * Please zip up the project and submit via the Greenhouse link in your email.
