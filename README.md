@@ -2,7 +2,7 @@
 
 Option 1 (Cloud 9):
 
-1. You will be invited to a cloud9 account, create a new workspace -> clone workspace -> rails-lab
+1. You will be invited to a cloud9 account, create a new workspace -> clone workspace -> rails-lab-current-events
 2. Everything should be already set up and good to go, and you have full access
 
 Option 2 (clone to your own computer):
