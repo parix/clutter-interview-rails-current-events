@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Create event dates from 2000/1/1 to today.
+(Date.parse("2000/1/1")..Date.today).each do |date|
+  EventDate.create(:date => date)
+end

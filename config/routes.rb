@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'events#index' # this is the entry point for the UI
 
   namespace :api do
-    # API controller goes here
+    get 'event_dates', to: 'event_dates#index'
+    get 'event_dates/:date', to: 'event_dates#show'
   end
 end

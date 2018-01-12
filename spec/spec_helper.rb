@@ -21,6 +21,8 @@ require 'webmock/rspec'
 require 'support/helper'
 require 'wiki_scraper'
 
+$stdout.sync = false
+
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into(:webmock)
