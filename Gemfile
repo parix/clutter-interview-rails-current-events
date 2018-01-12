@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'turbolinks'
 
+gem 'wiki_scraper', path: 'lib/wiki_scraper'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
