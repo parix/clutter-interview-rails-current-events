@@ -1,1 +1,6 @@
 <H1>Hello World</H1>
+
+<% @event_dates.each do |event_date| %>
+  <a href="<%= "/#{event_date.date}" %>" value="<%= event_date.date %>"><%= event_date.date %></a>
+  \n
+<% end %>

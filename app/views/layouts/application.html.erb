@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+	<div class="header clearfix">
+		<h3 class="text-muted">Wiki Events</h3>
+		<input id='datepicker' class='navbar-right' type="text" data-provide='datepicker' data-date-start-date='01-01-2000' >
+	</div>
+	<%= yield %>
+	<footer class="footer">
+		<p>© 2018 Clutter Interviewee, Inc.</p>
+	</footer>
+</div>
 </body>
 </html>

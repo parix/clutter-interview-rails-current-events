@@ -17,7 +17,7 @@ describe WikiScraper::Article, :vcr do
     end
 
     it 'stores the image url of the Wikipedia article'  do
-      expect(subject["image_url"]).to eq("upload.wikimedia.org/wikipedia/commons/thumb/6/68/Kashmir_region_2004.jpg/220px-Kashmir_region_2004.jpg")
+      expect(subject["image_url"]).to eq("//upload.wikimedia.org/wikipedia/commons/thumb/6/68/Kashmir_region_2004.jpg/220px-Kashmir_region_2004.jpg")
     end
   end
 end
