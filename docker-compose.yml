@@ -5,6 +5,20 @@ app:
       - 3000:3000
   links:
     - postgres
+    - redis
+  volumes:
+    - .:/usr/src/app
+  environment:
+    RAILS_ENV: development
+    POSTGRES_USER: 'clutter'
+    POSTGRES_PASSWORD: 'somepassword'
+
+sidekiq:
+  build: .
+  command: bundle exec sidekiq -C config/sidekiq.yml
+  links:
+    - postgres
+    - redis
   volumes:
     - .:/usr/src/app
   environment:
@@ -18,3 +32,6 @@ postgres:
     POSTGRES_USER: 'clutter'
     POSTGRES_PASSWORD: 'somepassword'
     POSTGRES_PORT: 5432
+
+redis:
+  image: redis:3.2.8

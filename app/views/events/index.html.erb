@@ -1,6 +1,9 @@
-<H1>Hello World</H1>
+<H1>Locally Cached Dates</H1>
 
+<ul>
 <% @event_dates.each do |event_date| %>
-  <a href="<%= "/#{event_date.date}" %>" value="<%= event_date.date %>"><%= event_date.date %></a>
-  \n
+  <li>
+    <a href="<%= "/#{event_date.date}" %>" ><%= event_date.date %></a>
+  </li>
 <% end %>
+</ul>
