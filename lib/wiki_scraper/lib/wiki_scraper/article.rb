@@ -1,16 +1,23 @@
 require 'nokogiri'
 require 'open-uri'
+require 'addressable'
 
 class WikiScraper
   class Article
+    class HTTPError < StandardError; end
+
     attr_accessor :url, :doc
 
     def initialize(url)
-      @url = URI(url)
+      @url = Addressable::URI.parse(url)
     end
 
     def doc
-      @doc ||= Nokogiri::HTML(open(url))
+      begin
+        @doc ||= Nokogiri::HTML(open(url))
+      rescue OpenURI::HTTPError => e
+        raise WikiScraper::Article::HTTPError, "#{e.message} for #{url}"
+      end
     end
 
     def self.get_summary(url)
@@ -45,7 +52,7 @@ class WikiScraper
 
     def get_image_url
       if img = doc.xpath("//div[@class='mw-parser-output']//img").first
-        img.attr('src')
+        Addressable::URI.join("https://en.wikipedia.org", img.attr('src')).normalize.to_s
       else
         nil
       end

@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'turbolinks'
 
+gem 'sidekiq'
+
 gem 'wiki_scraper', path: 'lib/wiki_scraper'
 
 # Use ActiveModel has_secure_password

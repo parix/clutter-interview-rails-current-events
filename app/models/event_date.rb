@@ -1,7 +1,9 @@
 class EventDate < ActiveRecord::Base
+	belongs_to :event_month
   has_many :events
 
-  validates :date, :uniqueness => true
+  validates :date, :uniqueness => true, :presence => true
+  validates :event_month, :presence => true
 
   def to_json
     to_hash.to_json
@@ -9,8 +11,20 @@ class EventDate < ActiveRecord::Base
 
   def to_hash
     { "date" => date,
-      "href" => "/event_date/#{date.to_s}" }
+      "href" => "/#{date.to_s}" }
   end
-  # checksum
-  # Digest::MD5.hexdigest(open("https://en.wikipedia.org/wiki/Portal:Current_events/January_2011", &:read))
+
+  def events_hash
+    { "status" => event_month.status,
+      "last_update_at" => last_update_at,
+      "events" => events.map(&:to_hash) }
+  end
+
+  def last_update_at
+    if event_month.checksum
+      event_month.updated_at.to_s
+    else
+      "never"
+    end
+  end
 end

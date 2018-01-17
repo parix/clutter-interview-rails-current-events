@@ -3,10 +3,6 @@ class Event < ActiveRecord::Base
 
   validates :event_date, :presence => true
 
-  def to_json
-    to_hash.to_json
-  end
-
   def to_hash
     { "title" => title,
       "summary" => summary,
