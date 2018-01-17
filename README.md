@@ -16,6 +16,27 @@ Option 2 (clone to your own computer):
 
 That should get you up and running, to run your local server run `rails s` in your terminal, with default settings that will let you access your app at `localhost:3000`
 
+## Setup Instructions
+
+This implementation requires Docker and docker-compose to be installed.
+
+To start the application:
+```
+  $ docker-compose build
+  $ docker-compose run app rake db:setup
+  $ docker-compose up
+```
+Then visit docker-ip:3000.
+
+To run specs:
+```
+  $ docker-compose build
+  $ docker-compose run app bash
+  $ rake db:setup && rake db:test:prepare
+  $ RAILS_ENV=test rspec spec/.
+```
+Note: specs take around 2-3 minutes to finish.
+
 ## Objective
 Build an application that (pseudo) summarizes events on a given day scraped from Wikipedia. Each event should be persisted locally, such that subsequent requests for the same date will not trigger a visit to Wikipedia.
 
