@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WikiScraper::Article, :vcr do
+describe WikiScraper::Article, :vcr => { :cassette_name => "WikiEvents/January_2018" } do
   context '.get_summary' do
     subject { described_class.get_summary("https://en.wikipedia.org/wiki/Kashmir_conflict") }
 

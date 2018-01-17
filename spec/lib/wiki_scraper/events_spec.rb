@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WikiScraper::Events, :vcr do
+describe WikiScraper::Events, :vcr => { :cassette_name => "WikiEvents/January_2018" } do
   context '.get_events' do
     subject { WikiScraper::Events.get_events(month: "January_2018") }
 
@@ -9,7 +9,7 @@ describe WikiScraper::Events, :vcr do
     end
 
     it 'returns all available dates' do
-      expect(subject.keys.count).to eq(13)
+      expect(subject.keys.count).to eq(21)
     end
   end
 end

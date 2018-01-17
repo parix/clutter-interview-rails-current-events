@@ -5,12 +5,8 @@ class EventDate < ActiveRecord::Base
   validates :date, :uniqueness => true, :presence => true
   validates :event_month, :presence => true
 
-  def to_json
-    to_hash.to_json
-  end
-
   def to_hash
-    { "date" => date,
+    { "date" => date.to_s,
       "href" => "/#{date.to_s}" }
   end
 
