@@ -3,7 +3,7 @@
 <ul>
 <% @event_dates.each do |event_date| %>
   <li>
-    <a href="<%= "/#{event_date.date}" %>" ><%= event_date.date %></a>
+    <a href="<%= "/date/#{event_date.date}" %>" ><%= event_date.date %></a>
   </li>
 <% end %>
 </ul>

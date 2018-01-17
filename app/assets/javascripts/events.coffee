@@ -3,22 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 display_events = (date) ->
-  $.ajax
-    url: "api/event_dates/#{date}"
-    dataType: "json"
-    success: (event_date, textStatus, jqXHR) ->
-      $('#events').empty()
-      if event_date['status'] == "Updating"
-        $('#events').append("<h3>We are currently updating this page as it may be out of date.</h3>")
-      $('#events').append("<h1>#{date}</h1>")
-      $('#events').append("<p>Last Update: #{event_date['last_update_at']}</p>")
-      display_event = (event) ->
-        $('#events').append("<h2>#{event['title']}</h2>")
-        if event['image_url'] != null
-          $('#events').append("<img src=\"#{event['image_url']}\">")
-        $('#events').append(event['summary'])
-        $('#events').append("<hr>")
-      display_event event for event in event_date['events']
+  if window.location.pathname != "/dates"
+    $.ajax
+      url: "/api/event_dates/#{date}"
+      dataType: "json"
+      success: (event_date, textStatus, jqXHR) ->
+        $('#events').empty()
+        if event_date['status'] == "Updating"
+          $('#events').append("<h3>We are currently updating this page as it may be out of date.</h3>")
+        $('#events').append("<h1>#{date}</h1>")
+        $('#events').append("<p>Last Update: #{event_date['last_update_at']}</p>")
+        display_event = (event) ->
+          $('#events').append("<h2>#{event['title']}</h2>")
+          if event['image_url'] != null
+            $('#events').append("<img src=\"#{event['image_url']}\">")
+          $('#events').append(event['summary'])
+          $('#events').append("<hr>")
+        display_event event for event in event_date['events']
 
 format_date = (date) ->
   month = '' + (date.getMonth() + 1)
@@ -31,6 +32,12 @@ format_date = (date) ->
   return [year, month, day].join('-')
 
 ready = () ->
+  if window.location.pathname != "/dates"
+    $("#datepicker").show()
+  else
+    $("#events").empty()
+    $("#datepicker").hide()
+
   $('#datepicker').datepicker({
     "startDate": "2000-01-01",
     "format": "yyyy-mm-dd"
@@ -44,7 +51,7 @@ ready = () ->
 
   setInterval () ->
     display_events(format_date($('#datepicker').datepicker('getDate')))
-  , 120000
+  , 30000
 
   display_events(format_date($('#datepicker').datepicker('getDate')))
 

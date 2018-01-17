@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'events#index' # this is the entry point for the UI
-  get '/:date', to: 'events#show'
+  root 'events#show' # this is the entry point for the UI
+  get '/date/:date', to: 'events#show'
+  get '/dates', to: 'events#index'
 
   namespace :api do
     get 'event_dates', to: 'event_dates#index'

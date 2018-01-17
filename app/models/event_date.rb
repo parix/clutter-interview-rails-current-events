@@ -7,7 +7,7 @@ class EventDate < ActiveRecord::Base
 
   def to_hash
     { "date" => date.to_s,
-      "href" => "/#{date.to_s}" }
+      "href" => "/date/#{date.to_s}" }
   end
 
   def events_hash
