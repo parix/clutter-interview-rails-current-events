@@ -15,7 +15,7 @@ describe EventDate, :type => :model, :vcr => { :cassette_name => "WikiEvents/Jan
     end
 
     it "contains the href" do
-      expect(subject["href"]).to eq("/2018-01-01")
+      expect(subject["href"]).to eq("/date/2018-01-01")
     end
   end
 
